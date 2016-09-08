@@ -13,7 +13,7 @@
 
   // 4) What does .bind do?
 
-      //Answer
+      //binds a function to a object.
 
 
 //Next Problem
@@ -23,17 +23,33 @@
   //email --> which is a string
   //getUsername --> which is a function that returns the current object's username property. *Don't use 'user' instead use the 'this' keyword*
 
-    //Code Here
+    var user = {
+      username: 'Noah',
+      email: 'nbtippetts@gmail.com',
+      getUsername: function(){
+        return this.username = this.username;
+      }
+    }
 
 //Now, invoke the getUsername method and verify you got the username of the object and not anything else.
 
+var nameOfUser = user.getUsername;
+nameOfUser();
 
 //Next Problem
-
+function Car(name, model, year){
+  this.name = name;
+  this.model = model;
+  this.year = year;
+  this.moveCar = function(){
+    this.move += 10;
+    return this.move;
+  }
+}
 
 // Write the function definitions which will make the following function invocations function properly.
 
-  //Function Invocations Here
+  Car();
 
 var prius = new Car('Toyota', 'Prius', 2011);
 var mustang = new Car('Ford', 'Mustang', 2013);
@@ -54,7 +70,7 @@ var getYear = function(){
 //Above you're given the getYear function. Using your prius and mustang objects from above, use the proper syntax that will allow for you to call the getYear function with the prius then the mustang objects being the focal objects. *Don't add getYear as a property on both objects*.
 
 //Note(no tests)
-  //Code Here
+Car.prototype.getYear = getYear;
 
 
 //New Problem
@@ -66,17 +82,18 @@ var myUser = {
 };
 
 var getMyUsername = function() {
- return this.username;
+ console.log(this.username);
 };
 
-var userName = getMyUsername(); //Fix this
+var use = getMyUsername.bind(myUser);
+use();
 
 //Above you're given an object, a function, and a setTimeout invocation. After 5 seconds, what will the getUsername function return?
 //Note(no tests)
-  //Answer Here
 
+  //undefined
 //In the example above, what is the 'this keyword' bound to when getUsername runs?
 
-  //Answer Here
+  //myUser
 
 //Fix the getMyUsername invocation so that userName will be equal to 'iliketurtles'.
