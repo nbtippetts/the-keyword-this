@@ -27,14 +27,14 @@
       username: 'Noah',
       email: 'nbtippetts@gmail.com',
       getUsername: function(){
-        return this.username = this.username;
+        return user.username;
       }
     }
 
 //Now, invoke the getUsername method and verify you got the username of the object and not anything else.
 
 var nameOfUser = user.getUsername;
-nameOfUser();
+console.log(nameOfUser());
 
 //Next Problem
 function Car(name, model, year){
@@ -49,7 +49,7 @@ function Car(name, model, year){
 
 // Write the function definitions which will make the following function invocations function properly.
 
-  Car();
+Car();
 
 var prius = new Car('Toyota', 'Prius', 2011);
 var mustang = new Car('Ford', 'Mustang', 2013);
@@ -82,10 +82,10 @@ var myUser = {
 };
 
 var getMyUsername = function() {
- console.log(this.username);
+ return this.username;
 };
 
-var use = getMyUsername.bind(myUser);
+var use = getMyUsername.call(myUser);
 use();
 
 //Above you're given an object, a function, and a setTimeout invocation. After 5 seconds, what will the getUsername function return?
